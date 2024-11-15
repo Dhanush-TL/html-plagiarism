@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #4facfe, #00f2fe);
+    background-size: 200% 200%;
+    animation: gradientAnimation 6s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    width: 650px;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.text-input textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    resize: none;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 6px rgba(79, 172, 254, 0.5);
+}
+
+.progress-ring {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.circle-chart {
+    width: 140px;
+    height: 140px;
+    transform: rotate(-90deg);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #ddd;
+    stroke-width: 2.8;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.5s, stroke 0.5s;
+    animation: pulseAnimation 1s infinite;
+}
+
+@keyframes pulseAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.summary-box {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+button[title] {
+    position: relative;
+}
+
+button[title]::after {
+    content: attr(title);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+}
+
+button[title]:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+button {
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.percentage-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}

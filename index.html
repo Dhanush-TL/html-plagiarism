@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Plagiarism Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enhanced Plagiarism Detector</h1>
+        <p>Analyze and compare your text with advanced features and insights.</p>
+
+        <!-- File Upload Option for Sample Text -->
+        <div class="file-upload">
+            <label for="fileUpload">Upload Sample Text File:</label>
+            <input type="file" id="fileUpload" accept=".txt" title="Upload a .txt file for comparison">
+        </div>
+
+        <!-- File Upload Option for User Text -->
+        <div class="file-upload">
+            <label for="compareFileUpload">Upload User Text File:</label>
+            <input type="file" id="compareFileUpload" accept=".txt" title="Upload a .txt file for comparison">
+        </div>
+
+        <!-- Text Input Areas -->
+        <div class="text-input">
+            <textarea id="sampleText" placeholder="Enter or paste sample text here..." title="Enter sample text" oninput="realTimeCheck()"></textarea>
+            <textarea id="userText" placeholder="Enter or paste text to compare..." title="Enter text for comparison" oninput="realTimeCheck()"></textarea>
+        </div>
+
+        <!-- Character and Word Counter -->
+        <div class="counter">
+            <p id="sampleTextCount">Sample Text Characters: 0, Words: 0</p>
+            <p id="userTextCount">User Text Characters: 0, Words: 0</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="buttons">
+            <button onclick="checkPlagiarism()" title="Click to check plagiarism">Check Plagiarism</button>
+            <button onclick="resetFields()" title="Reset both input fields and results">Reset</button>
+            <button onclick="downloadReport()" title="Download a detailed report of the analysis">Download Report</button>
+        </div>
+
+        <!-- Enhanced Similarity Ring -->
+        <div class="progress-ring">
+            <svg class="circle-chart" viewBox="0 0 36 36">
+                <path class="circle-bg" d="M18 2.0845a 15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 1 1 0-31.831" />
+                <path id="circle" class="circle" stroke-dasharray="0, 100" d="M18 2.0845a 15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 1 1 0-31.831" />
+            </svg>
+            <p id="similarityPercentage" class="percentage-text">0%</p>
+        </div>
+
+        <!-- Summary Box with Copy Button -->
+        <div id="summaryBox" class="summary-box">
+            Similarity Level: Unique Content 
+            <button id="copyButton" onclick="copySummary()" title="Copy summary">Copy</button>
+        </div>
+
+        <!-- Collapsible Report Section -->
+        <div class="collapsible">
+            <h3 onclick="toggleSection('detailedReport')">Detailed Report ⯆</h3>
+            <div id="detailedReport" class="report-content">
+                <p id="similarityResult"></p>
+                <p id="commonWords"></p>
+                <div id="highlightedText" class="highlighted-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
